@@ -25,6 +25,7 @@ function init() {
 	explosionImage.src = "images/e1.png";
 	let explosionSound = new Audio();
 	explosionSound.src = "audio/explosion1.mp3";
+	explosionSound.preload = "auto";
 	tickCount = 0;
 	frameXPos = 0;
 	frameYPos = 0;
@@ -57,8 +58,8 @@ function Explosion(options) {
 	that.render = function() {
 		//Prevents error: "Uncaught TypeError: Cannot read property 'render' of null at that.render"
 		if (that !== null) {
-			requestAnimationFrame(that.render);
 			that.sound.play();
+			requestAnimationFrame(that.render);
 			that.context.clearRect((that.imageWidth - that.frameWidth)/2, (that.imageHeight - that.frameHeight)/2, that.frameWidth, that.frameHeight);
 			that.context.drawImage(
 				that.image,
